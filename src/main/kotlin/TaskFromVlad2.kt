@@ -57,7 +57,7 @@ fun main() {
         println(i)
     }
 
-    // Обработка исключений
+    // Обработка исключений.
     try {
         print("Введите целое число: ")
         val userInput = scanner.nextInt()
