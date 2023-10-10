@@ -11,41 +11,33 @@ fun main() {
     }
 }
 
-// 1. Обращение к `a` без вызова исключения
 fun printNullableString(a: String?) {
-    if (a != null) {
-        println(a.length)
-    } else {
-        println("Строка пуста")
-    }
+    println(a?.length ?: "Строка пуста")
 }
 
-// 2. Рассмотрение кода
+// 2. Рассмотрение кода (без изменений)
 fun printFilteredIntList() {
     val nullableList: List<Int?> = listOf(1, 2, null, 4)
     val intList: List<Int> = nullableList.filterNotNull()
     println(intList)
 }
 
-// 3. Преобразование `s` в "empty", если `s` равно null
+// 3. Преобразование `s` в "empty", если `s` равно null, с использованием elvis.
 fun printTransformedString() {
-    var s: String? = null
-    if (s == null) {
-        s = "empty"
-    }
-    println(s)
+    val s: String? = null
+    println(s ?: "empty")
 }
 
-// 4. Попытка преобразования nullable строки в ненулевую строку
+// 4. Попытка преобразования nullable строки в ненулевую строку с использованием `!!`.
 fun tryForceNonNull(value: String?) {
-    if (value != null) {
-        println(value)
-    } else {
+    try {
+        println(value!!)
+    } catch (e: KotlinNullPointerException) {
         println("Строка пуста")
     }
 }
 
-// 5. Пользовательское исключение и его обработка
+// 5. Пользовательское исключение и его обработка (без изменений)
 class InvalidUserInputException : Exception("Неверный ввод пользователя")
 
 fun checkInput(input: String) {
